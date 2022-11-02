@@ -4,7 +4,8 @@ import os
 Big = 1.5
 size = [round(50 * Big), round(25 * Big)]
 Size = open("Size.txt", "w")
-
+# Img
+# ---------------------------------------#
 NameList = os.listdir("./")
 PNG = 0
 for x in NameList:
@@ -54,11 +55,13 @@ def GetChar(Brightness):
 
 
 def WriteToTxT(RowList):
+    Out.write("|")
     for x in RowList:
         Out.write(x + "|")
     Out.write("\n")
 
 def WriteColor (ColorList):
+    Color.write("|")
     for x in ColorList:
         Color.write(str(x[0])+".")
         Color.write(str(x[1]) + ".")

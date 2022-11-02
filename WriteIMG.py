@@ -13,7 +13,6 @@ for line in Color:
         ColorRow[x] = ColorRow[x].split(".")
     ColorList.append(ColorRow)
 
-
 LineList = []
 for line in Out:
     line = line.replace("\n", "")
