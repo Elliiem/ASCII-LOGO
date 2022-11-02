@@ -39,7 +39,6 @@ def GetCharTXT(Row, Pixel):
 
 for Row in range(1, height):
     color = ColorList[Row-1]
-    print(Row)
     for Pixel in range(1, width-1):
         r = int(color[Pixel][0])
         g = int(color[Pixel][1])

@@ -1,15 +1,29 @@
 from PIL import Image
 import os
+Config = []
+Conf = open("Config.txt","r")
+for lines in Conf:
+    parameter = (lines.split(":"))[1]
+    Config.append(parameter)
+Config[1] = Config[1].split(",")
+print(Config[1])
+for x in range(0,len(Config[1])):
+    List = Config[1]
+    List[x] = List[x].replace('"', "")
+    List[x] = List[x].replace("\n", "")
+Config[1] = List
+print(Config[1])
 
-Big = 1.5
+Big = int(Config[0])
 size = [round(50 * Big), round(25 * Big)]
 Size = open("Size.txt", "w")
 # Img
 # ---------------------------------------#
 NameList = os.listdir("./")
-PNG = 0
+
+
 for x in NameList:
-    if x.__contains__(".png"):
+    if x.__contains__(".png") and x != "Bild.png":
         print(x)
         PNG = x
         break
@@ -29,11 +43,11 @@ Color = open("color.txt", "w+")
 # ---------------------------------------#
 
 
-# Kinda Normal CharList = ["░","▒","▓","█"]
-# Kunst CharList = ["□","▤","▒","▓","▧","▩","▣"]
-# Funktioniert CharList = ["█","▉","▊","▋","▌","▍","▎","▏",":"]
-CharList = [" "," "," ",";", "c", "o", "0", "A"]
-#CharList = ["=","="]
+
+
+
+
+CharList = Config[1]
 CharList.reverse()
 
 divisor = 255 / (len(CharList) - 1)
@@ -83,13 +97,15 @@ max = 0
 min = 255
 for Row in range(1, height):
     for Pixel in range(1, width):
-        print(px[Pixel, Row])
         PixelBrightness = GetBrightness(px[Pixel, Row])
         if PixelBrightness < min:
             min = PixelBrightness
         if PixelBrightness > max:
             max = PixelBrightness
-mult = 255 / (max - min)
+if max-min !=0:
+ mult = 255 / (max - min)
+else:
+ mult = 1
 # ------------------------------#
 
 # Txt File Out.txt
