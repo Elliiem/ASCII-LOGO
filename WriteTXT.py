@@ -4,8 +4,7 @@ import os
 Big = 1.5
 size = [round(50 * Big), round(25 * Big)]
 Size = open("Size.txt", "w")
-# Img
-# ---------------------------------------#
+
 NameList = os.listdir("./")
 PNG = 0
 for x in NameList:
