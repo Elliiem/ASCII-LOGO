@@ -6,13 +6,13 @@ for lines in Conf:
     parameter = (lines.split(":"))[1]
     Config.append(parameter)
 Config[1] = Config[1].split(",")
-print(Config[1])
+
 for x in range(0,len(Config[1])):
     List = Config[1]
     List[x] = List[x].replace('"', "")
     List[x] = List[x].replace("\n", "")
 Config[1] = List
-print(Config[1])
+
 
 Big = float(Config[0])
 size = [round(50 * Big), round(25 * Big)]
@@ -48,7 +48,6 @@ Color = open("color.txt", "w+")
 
 
 CharList = Config[1]
-print(Config[2])
 if Config[2] == "true\n":
     CharList.reverse()
 
