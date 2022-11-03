@@ -14,7 +14,7 @@ for x in range(0,len(Config[1])):
 Config[1] = List
 print(Config[1])
 
-Big = int(Config[0])
+Big = float(Config[0])
 size = [round(50 * Big), round(25 * Big)]
 Size = open("Size.txt", "w")
 # Img
@@ -48,7 +48,9 @@ Color = open("color.txt", "w+")
 
 
 CharList = Config[1]
-CharList.reverse()
+print(Config[2])
+if Config[2] == "true\n":
+    CharList.reverse()
 
 divisor = 255 / (len(CharList) - 1)
 
