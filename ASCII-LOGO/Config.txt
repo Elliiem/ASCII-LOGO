@@ -1,3 +1,0 @@
-Size:2
-CharList:" "," "," ","o","o","0","A"
-reverse:true
