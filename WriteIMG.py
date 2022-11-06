@@ -1,10 +1,13 @@
 from PIL import Image,ImageDraw
+# Open Files
+# ------------------------------- #
 Out = open('Out.txt', 'r')
 Color = open("color.txt", "r")
 Size = open("Size.txt", "r")
+# ------------------------------- #
 
-
-
+# Get Colors
+# --------------------------------------- #
 ColorList = []
 for line in Color:
     ColorRow = line.split("|")
@@ -12,22 +15,26 @@ for line in Color:
     for x in range(0,len(ColorRow)):
         ColorRow[x] = ColorRow[x].split(".")
     ColorList.append(ColorRow)
+# --------------------------------------- #
 
+# Get Chars
+# -------------------------------- #
 LineList = []
 for line in Out:
     line = line.replace("\n", "")
     LineList.append(line)
+# -------------------------------- #
 
+# Pillow Image
+# ------------------------------------------------------------------------ #
 width = int(Size.readline())
 height = int(Size.readline())
-
-
 Img = Image.new("RGB", (6*width-5, 10*height-23), color=(100,100,100))
 d = ImageDraw.Draw(Img)
+# ------------------------------------------------------------------------ #
 
 def DrawText(Row,Pixel,char,colour):
     d.text(((Pixel-1)*6, (Row - 1) * 10-3), char, fill=colour)
-
 
 def GetCharTXT(Row, Pixel):
     if Pixel >= width - 1:
@@ -45,7 +52,5 @@ for Row in range(1, height):
         g = int(color[Pixel][1])
         b = int(color[Pixel][2])
         DrawText(Row, Pixel, GetCharTXT(Row, Pixel),(r,g,b))
-
-
 
 Img.save("Bild.png")
